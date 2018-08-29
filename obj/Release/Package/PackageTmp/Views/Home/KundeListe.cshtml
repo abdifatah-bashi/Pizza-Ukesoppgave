@@ -1,0 +1,37 @@
+﻿@model List<Pizza_Ukesoppgave.Models.Kunde>
+
+@{
+    ViewBag.Title = "KundeListe";
+}
+
+<h2>KundeListe</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+       Navn
+        </th>
+        <th>
+      Adresse
+       </th>
+     <th> Telefoner </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.Navn
+        </td>
+        <td>
+            @item.Adresse
+        </td>
+        <td>
+            @item.Telefoner
+        </td>
+        <td>
+          
+    </tr>
+}
+
+</table>

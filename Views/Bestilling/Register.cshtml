@@ -1,0 +1,93 @@
+﻿@model Pizza_Ukesoppgave.ModelView.BestillingView
+
+@{
+    ViewBag.Title = "Register Bestilling";
+}
+
+<h2 class="text-primary">Register Bestilling</h2>
+
+@using (Html.BeginForm("Lagre", "Bestilling")) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Bestilling.PizzaType, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.Bestilling.PizzaType, // 1. Store selected value in Model.State;
+                                             // when     page is rendered after postback,
+                                             // take selected value from Model.State.
+
+                               // 2. Take list of values from Model.States
+                              new SelectList(Model.PizzaTypes),
+
+                               // 3. Text for the first 'default' option
+                               "- Velg pizza -",
+
+                               //4. A class name to assign to <select> tag
+                               new { @class = "form-control" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Bestilling.Tykkelse, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group">
+            Tynn
+            @Html.RadioButtonFor(model => model.Bestilling.Tykkelse, "Tynn")
+            Tykk
+            @Html.RadioButtonFor(model => model.Bestilling.Tykkelse, "Tykk")
+
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Bestilling.Antall, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Bestilling.Antall, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Bestilling.Antall, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Bestilling.Kunde.Navn, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Bestilling.Kunde.Navn, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Bestilling.Kunde.Navn, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Bestilling.Kunde.Adresse, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Bestilling.Kunde.Adresse, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Bestilling.Kunde.Adresse, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Bestilling.Kunde.Telefoner, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Bestilling.Kunde.Telefoner, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Bestilling.Kunde.Telefoner, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Lagre" class="btn btn-success btn-lg" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Liste")
+</div>
