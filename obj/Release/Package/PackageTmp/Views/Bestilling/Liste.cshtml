@@ -1,13 +1,14 @@
 ﻿@model List<Pizza_Ukesoppgave.Models.Bestilling>
 @{
-    ViewBag.Title = "Liste";
+    ViewBag.Title = "Bestillinger";
 }
-<h2 class="text-primary">Bestillings Liste</h2>
+<h2 class="mb-3"><i class='fas fa-folder-open'></i> Bestillinger</h2>
 
 
 <body>
-    <div>
-        
+    <div class="row my-5">
+
+        <div class="col-sm-8">
             <table class="table">
                 <tr>
                     <th>Pizza Type</th>
@@ -27,6 +28,8 @@
                         <td>@bestilling.Kunde.Navn</td>
                         <td>@bestilling.Kunde.Adresse </td>
                         <td>@bestilling.Kunde.Telefoner  </td>
+                        <td> <a href="/bestilling/slett?id=@bestilling.Id" class="text-danger btn " ><i class='fas fa-trash-alt'></i> </a></td>
+
 
 
 
@@ -37,10 +40,15 @@
                     </tr>
                 }
             </table>
+        </div>
 
-       
-       
-        <a href="/bestilling/register" class="btn btn-success">Register bestilling</a>
+
+
+
+
+
     </div>
+
+    <div > <a href="/bestilling/register" class="btn btn-primary"><i class='fas fa-plus-square'></i> Bestilling</a>  </div>
 </body>
 

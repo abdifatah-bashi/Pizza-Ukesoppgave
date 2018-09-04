@@ -40,6 +40,8 @@ namespace Pizza_Ukesoppgave.Controllers
             
             return View(bestillingViewModel);
         }
+
+        [HttpPost]
         public ActionResult Lagre(BestillingView bestillingModel)
         {
             // Sjekk hvis kunden eksisterer 
@@ -75,14 +77,17 @@ namespace Pizza_Ukesoppgave.Controllers
                 return RedirectToAction("Liste");
             }
 
-
-
-
-
-
-            
         }
 
+        // Slett bestilling
+        public ActionResult Slett(int id)
+        {
+            var bestilling = db.Bestillinger.SingleOrDefault(b => b.Id == id);
+            db.Bestillinger.Remove(bestilling);
+            db.SaveChanges();
+            return RedirectToAction("Liste");
+        }
+       
 
     }
 }
